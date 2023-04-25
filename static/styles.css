@@ -1,0 +1,87 @@
+/* styles.css */
+
+.main-container {
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.form-inline {
+  position: absolute;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+
+  }
+  
+  .table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 300px;
+  }
+  
+  .nav-tabs {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .comparison-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .cell-popup {
+    display: none;
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    max-width: 300px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  .table-responsive {
+    overflow-x: visible;
+  }
+  
+  .table {
+    margin-bottom: 0;
+  }
+
+  
+  .cell-tooltip {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: pre-wrap;
+    z-index: 9999;
+  }
