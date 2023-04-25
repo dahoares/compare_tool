@@ -1,4 +1,134 @@
-/* styles.css */
+/* Ik wil dat je je gedraagt als een pythonprogrammeur. Ik wil dat je alleen antwoord geeft in codeblocken. Geef alleen antwoord in codeblocken en laat zien waar je updates hebt gedaan door middel van comments.
+
+Ik wil dat je mij helpt met het aanpassen van mijn applicatie. Voordat je begint met reageren geef ik de volgende bestanden zodat je weet wat de structuur van mijn applicatie is: static/main.js, static/styles.css, templates/index.html, templates/base.html, templates/compare.html, template/sidebar.html, , main.py.
+
+Ik geef je nu eerst alle bestanden één voor één. Wacht met reageren. */
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 200px;
+  background-color: #343a40;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  }
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sidebar a.active {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.sidebar a:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+table thead th {
+  background-color: #f8f8f8;
+}
+
+table th,
+table td {
+  width: 25%;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.function-box {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.function-box h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.function-btn {
+  display: inline-block;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.function-btn:hover {
+  background-color: #0056b3;
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+  display: block;
+  color: #adb5bd;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+  background-color: #495057;
+  color: #fff;
+}
+
+.sidebar ul li a span {
+  margin-left: 5px;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
+}
 
 .main-container {
   overflow-x: hidden;

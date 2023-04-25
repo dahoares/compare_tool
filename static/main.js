@@ -1,3 +1,94 @@
+
+/* Add this code to main.js */
+
+$("#check-value-usage-btn").click(function () {
+  var searchValue = $("#search-value").val();
+  if (!searchValue) {
+    alert("Please enter a value to search.");
+    return;
+  }
+  checkValueUsage(searchValue);
+});
+
+function checkValueUsage(searchValue) {
+  var repo1 = "repo1";
+  var repo2 = "repo2";
+  var file1 = $("#file1").val();
+  var file2 = $("#file2").val();
+
+  // Get file content for both files
+  $.when(
+    $.get('/get_file_content', { repo_id: repo1, file_path: file1 }),
+    $.get('/get_file_content', { repo_id: repo2, file_path: file2 })
+  ).done(function (file1Content, file2Content) {
+    var file1Data = jsyaml.load(file1Content[0]);
+    var file2Data = jsyaml.load(file2Content[0]);
+
+    // Clear table
+    $("#value-usage-table tbody").empty();
+
+    // Perform search and populate the table
+    searchValueUsage(file1Data, file2Data, searchValue, '', 1);
+    searchValueUsage(file2Data, file1Data, searchValue, '', 2);
+  });
+}
+
+function searchValueUsage(fileData, otherFileData, searchValue, parentKey = '', repoNumber) {
+  var valueUsageTable = $("#value-usage-table tbody");
+
+  for (var key in fileData) {
+    var fullKey = parentKey ? parentKey + '.' + key : key;
+    if (typeof fileData[key] === 'object') {
+      searchValueUsage(fileData[key], otherFileData, searchValue, fullKey, repoNumber);
+    } else if (fileData[key] === searchValue) {
+      var otherFileValue = getValueByKey(otherFileData, fullKey);
+      valueUsageTable.append(`<tr><td>Repo ${repoNumber}</td><td>${fullKey}</td><td>${searchValue}</td><td>${otherFileValue !== undefined ? otherFileValue : 'N/A'}</td></tr>`);
+    }
+  }
+}
+
+function getValueByKey(obj, key) {
+  var keys = key.split('.');
+  var currentObj = obj;
+
+  for (var i = 0; i < keys.length; i++) {
+    if (currentObj.hasOwnProperty(keys[i])) {
+      currentObj = currentObj[keys[i]];
+    } else {
+      return undefined;
+    }
+  }
+
+  return currentObj;
+}
+
+
+/* Add this new code */
+document.addEventListener('DOMContentLoaded', function () {
+  const menuItems = document.querySelectorAll('.sidebar ul li a');
+  const pages = document.querySelectorAll('.content > div');
+
+  menuItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      // Make the clicked item active and others inactive
+      menuItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      // Show the corresponding page and hide others
+      const targetPageId = item.getAttribute('href');
+      pages.forEach(page => {
+        if (page.id === targetPageId) {
+          page.style.display = 'block';
+        } else {
+          page.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+
 $(".clone-btn").click(function () {
   var repo_id = $(this).data("repo");
   var lastCharacterOfRepoId = repo_id.slice(-1);

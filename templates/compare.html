@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+            <div class="col-md-10">
+                <div id="compare-yamls-page">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h2>Source-file</h2>
+                                <div class="mb-3">
+                                    <label for="repo-url1" class="form-label">Repository URL</label>
+                                    <input type="text" class="form-control" id="repo-url1">
+                                    <button data-repo="repo1" class="btn btn-primary mt-2 clone-btn">Clone Repository</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="branch1" class="form-label">Branch</label>
+                                    <select class="form-select" id="branch1" disabled>
+                                    </select>
+                                    <button data-repo="repo1" class="btn btn-primary mt-2 select-branch-btn">Select Branch</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="file1" class="form-label">File</label>
+                                    <select class="form-select" id="file1" disabled>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h2>Target-file</h2>
+                                <div class="mb-3">
+                                    <label for="repo-url2" class="form-label">Repository URL </label>
+                                    <input type="text" class="form-control" id="repo-url2">
+                                    <button data-repo="repo2" class="btn btn-primary mt-2 clone-btn">Clone Repository</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="branch2" class="form-label">Branch</label>
+                                    <select class="form-select" id="branch2" disabled>
+                                    </select>
+                                    <button data-repo="repo2" class="btn btn-primary mt-2 select-branch-btn">Select Branch</button>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="file2" class="form-label">File</label>
+                                    <select class="form-select" id="file2" disabled>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button id="compare-btn" class="btn btn-primary" disabled>Compare</button>
+                        </div>
+                    </div>
+                    <div class="container mt-4 comparison-section">
+                        <div class="col">
+                            <ul class="nav nav-tabs" id="comparisonTabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active" id="differences-tab" data-bs-toggle="tab" href="#differences" role="tab"
+                                        aria-controls="differences" aria-selected="true">Differences</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="new-keys-tab" data-bs-toggle="tab" href="#new-keys" role="tab"
+                                        aria-controls="new-keys" aria-selected="false">New Keys</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="obsolete-keys-tab" data-bs-toggle="tab" href="#obsolete-keys" role="tab"
+                                        aria-controls="obsolete-keys" aria-selected="false">Obsolete Keys</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link" id="similarities-tab" data-bs-toggle="tab" href="#similarities" role="tab"
+                                        aria-controls="similarities" aria-selected="false">Similarities</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="comparisonTabsContent">
+                                <div class="tab-pane fade show active" id="differences" role="tabpanel" aria-labelledby="differences-tab">
+                                    <div class="table-responsive">
+                                        <table class="table" id="differences-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Key</th>
+                                                    <th scope="col">Source-file value</th>
+                                                    <th scope="col">Target-file value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="new-keys" role="tabpanel" aria-labelledby="new-keys-tab">
+                                    <div class="table-responsive">
+                                        <table class="table" id="new-keys-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Source-file key</th>
+                                                    <th scope="col">Source-file value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="obsolete-keys" role="tabpanel" aria-labelledby="obsolete-keys-tab">
+                                    <div class="table-responsive">
+                                        <table class="table" id="obsolete-keys-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Target-file key</th>
+                                                    <th scope="col">Target-file value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="similarities" role="tabpanel" aria-labelledby="similarities-tab">
+                                    <div class="table-responsive">
+                                        <table class="table" id="similarities-table">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Key</th>
+                                                    <th scope="col">Source-file value</th>
+                                                    <th scope="col">Target-file value</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            {% include "sidebar.html" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

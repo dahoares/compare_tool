@@ -17,6 +17,14 @@ repo_dirs = {
 def index():
     return render_template("index.html")
 
+@app.route("/compare")
+def compare():
+    return render_template("compare.html")
+
+@app.route("/value_usage")
+def value_usage():
+    return render_template("value_usage.html")
+
 @app.route("/clone", methods=["POST"])
 def clone_repo():
     data = request.json
